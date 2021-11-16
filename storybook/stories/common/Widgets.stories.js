@@ -20,6 +20,7 @@ import joinSharedIcon from '../../../source/renderer/app/assets/images/join-shar
 import TinySwitch from '../../../source/renderer/app/components/widgets/forms/TinySwitch';
 import ButtonLink from '../../../source/renderer/app/components/widgets/ButtonLink';
 import NormalSwitch from '../../../source/renderer/app/components/widgets/forms/NormalSwitch';
+import NotificationPopOver from '../../../source/renderer/app/components/widgets/notification-popover/NotificationPopOver';
 
 const { intl: enIntl } = new IntlProvider({
   locale: 'en-US',
@@ -202,5 +203,38 @@ storiesOf('Common|Widgets', module)
     <div>
       <NormalSwitch onChange={action('onChange')} />
       <NormalSwitch onChange={action('onChange')} checked />
+    </div>
+  ))
+  .add('NotificationPopOver', () => (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        padding: 100,
+      }}
+    >
+      <div style={{ marginBottom: 50 }}>
+        <NotificationPopOver
+          inline
+          visible={boolean('notificationPopOver', true)}
+          content="New discreet mode settings are available in Security tab"
+          offset={[0, 20]}
+        >
+          PopOver target
+        </NotificationPopOver>
+      </div>
+
+      <div style={{ marginBottom: 50 }}>
+        <NotificationPopOver
+          inline
+          visible={boolean('notificationPopOver', true)}
+          content="New discreet mode settings are available in Security tab"
+          placement="right"
+          offset={[0, 25]}
+        >
+          PopOver target
+        </NotificationPopOver>
+      </div>
     </div>
   ));
