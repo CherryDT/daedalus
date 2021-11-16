@@ -217,8 +217,9 @@ storiesOf('Common|Widgets', module)
       <div style={{ marginBottom: 50 }}>
         <NotificationPopOver
           inline
+          dismissLabel="Lorem"
           visible={boolean('notificationPopOver', true)}
-          content="New discreet mode settings are available in Security tab"
+          content="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
           offset={[0, 20]}
         >
           PopOver target
@@ -228,9 +229,34 @@ storiesOf('Common|Widgets', module)
       <div style={{ marginBottom: 50 }}>
         <NotificationPopOver
           inline
+          dismissLabel="Lorem"
           visible={boolean('notificationPopOver', true)}
-          content="New discreet mode settings are available in Security tab"
+          content="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
           placement="right"
+          offset={[0, 25]}
+        >
+          PopOver target
+        </NotificationPopOver>
+      </div>
+      <div style={{ marginBottom: 50 }}>
+        <NotificationPopOver
+          inline
+          dismissLabel="Lorem"
+          visible={boolean('notificationPopOver', true)}
+          content="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          placement="left"
+          offset={[0, 25]}
+        >
+          PopOver target
+        </NotificationPopOver>
+      </div>
+      <div style={{ marginBottom: 50 }}>
+        <NotificationPopOver
+          inline
+          dismissLabel="Lorem"
+          visible={boolean('notificationPopOver', true)}
+          content="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          placement="bottom"
           offset={[0, 25]}
         >
           PopOver target
