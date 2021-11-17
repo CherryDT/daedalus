@@ -20,4 +20,13 @@ export class DiscreetModeApi {
 
   unsetDiscreetModeSettingsTooltip = (): Promise<void> =>
     LocalStorageApi.unset(storageKeys.DISCREET_MODE_SETTINGS_TOOLTIP);
+
+  getDiscreetModeNotification = (): Promise<boolean> =>
+    LocalStorageApi.get(storageKeys.DISCREET_MODE_NOTIFICATION, true);
+
+  setDiscreetModeNotification = (enabled: boolean): Promise<void> =>
+    LocalStorageApi.set(storageKeys.DISCREET_MODE_NOTIFICATION, enabled);
+
+  unsetDiscreetModeNotification = (): Promise<void> =>
+    LocalStorageApi.unset(storageKeys.DISCREET_MODE_NOTIFICATION);
 }
