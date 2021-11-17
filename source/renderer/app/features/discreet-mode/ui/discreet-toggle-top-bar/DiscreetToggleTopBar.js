@@ -1,5 +1,5 @@
 // @flow
-import React from 'react';
+import React, { useState } from 'react';
 import classnames from 'classnames';
 import { observer } from 'mobx-react';
 import { PopOver } from 'react-polymorph/lib/components/PopOver';
@@ -16,27 +16,39 @@ type Props = {
 };
 
 const DiscreetToggleTopBar = ({ intl, hasTadaIcon }: Props) => {
-  const discreetModeFeature = useDiscreetModeFeature();
+  const {
+    isDiscreetMode,
+    isSettingsTooltipEnabled,
+    toggleDiscreetMode,
+    setDiscreetModeSettingsTooltip,
+  } = useDiscreetModeFeature();
+  const [visible, setVisible] = useState(false);
 
   return (
-    <div className={classnames(styles.root, hasTadaIcon && styles.hasTadaIcon)}>
+    <div
+      className={classnames(styles.root, hasTadaIcon && styles.hasTadaIcon)}
+      onMouseEnter={() => setVisible(true)}
+      onMouseLeave={() => setVisible(false)}
+    >
       <PopOver
+        visible={visible || isSettingsTooltipEnabled}
         content={
           <span className={styles.tooltip}>
             {intl.formatMessage(
-              messages[
-                discreetModeFeature.isDiscreetMode
-                  ? 'discreetModeOff'
-                  : 'discreetModeOn'
-              ]
+              messages[isDiscreetMode ? 'discreetModeOff' : 'discreetModeOn']
             )}
           </span>
         }
       >
         <DiscreetToggle
           className={styles.discreetToggle}
-          isDiscreetMode={discreetModeFeature.isDiscreetMode}
-          onToggle={discreetModeFeature.toggleDiscreetMode}
+          isDiscreetMode={isDiscreetMode}
+          onToggle={() => {
+            toggleDiscreetMode();
+            if (isSettingsTooltipEnabled) {
+              setDiscreetModeSettingsTooltip(false);
+            }
+          }}
         />
       </PopOver>
     </div>
